@@ -1,5 +1,5 @@
 SKRIPSI
 =======
 
-Dokumen dan aplikasi skripsi saya dengan judul: Aplikasi Kalender untuk Mengelola Jadwal Kegiatan di UMS Menggunakan Google Application API.
+Dokumen dan aplikasi tugas akhir saya dengan judul: Aplikasi Kalender untuk Mengelola Jadwal Kegiatan di UMS Menggunakan Google Application API.
 
