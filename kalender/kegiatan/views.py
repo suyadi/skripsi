@@ -51,6 +51,13 @@ def index(request):
             page_token = calendar_list.get('nextPageToken')
             if not page_token:
                 break
+        headers = {'Content-type': 'application/atom+xml'}
+        resp, content = http.request(
+                     'https://apps-apis.google.com/a/feeds/calendar/resource/2.0/ums.ac.id/',
+                     'GET',
+                     headers=headers)
+        print content
+
             
         return render_to_response('kegiatan/welcome.html', {
                 'calendar_list': calendar_list,
