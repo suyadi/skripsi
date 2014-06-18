@@ -99,3 +99,6 @@ CAS_AUTO_CREATE_USERS = True
 CAS_LOGOUT_COMPLETELY = True
 CAS_IGNORE_REFERER = True
 CAS_VERSION = '2'
+
+GMAIL = 'admin_user'
+GPASS = 'admin_password'
