@@ -1,0 +1,11 @@
+{% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+{% for field in form.visible_fields %}
+<div class="form-group">
+    {{ field.label_tag }}
+    {{ field }}
+    {% if field.help_text %}
+    <p class="help-block">{{ field.help_text }}</p>
+    {% endif %}
+</div>
+{% endfor %}
+<button type="submit" class="btn btn-primary">Simpan</button>
