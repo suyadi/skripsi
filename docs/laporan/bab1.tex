@@ -1,0 +1,53 @@
+%-----------------------------------------------------------------------------%
+\chapter{\babSatu}
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+\section{Latar Belakang}
+%-----------------------------------------------------------------------------%
+Edi Lukito Nugroho dalam bukunya Pemanfaatan Teknologi Informasi di Perguruan Tinggi menyebutkan paling tidak ada tiga peran \gls{ti} (TI) di perguruan tinggi. Pertama, sebagai integrator program dan kegiatan perguruan tinggi, dalam rangka meningkatkan efektivitas, efisiensi, dan produktivitas. Kedua, sebagai enabler bagi perbaikan/penyempurnaan proses-proses akademik dan administratif serta munculnya layananlayanan baru yang inovatif. Ketiga, memperluas akses bagi seluruh warga kampus \cite{nugroho2009}. 
+
+Peran TI sebagai integrator sangat penting, karena sering terjadi program kegiatan yang tidak dilakukan secara terpadu, tumpang tindih, dan banyak sumber daya yang tidak teralokasikan secara efisien. TI dapat membantu memudahkan perencanaan program yang lebih terpadu.
+
+Salah satu teknologi yang mendukung peran TI sebagai integrator adalah \f{Single Sign-On} disingkat SSO. \f{Single Sign-On} adalah sistem yang mengizinkan pengguna agar dapat mengakses seluruh sumber daya dalam jaringan hanya dengan menggunakan satu\f{ \gls{credential}} saja. Sistem ini tidak memerlukan interaksi yang manual, sehingga memungkinkan pengguna melakukan proses sekali login untuk mengakses seluruh layanan aplikasi tanpa berulang kali mengetikan password-nya. Teknologi ini sangat diminati dalam jaringan yang sangat besar dan bersifat heterogen, dimana sistem operasi serta aplikasi yang digunakan berasal dari banyak vendor, dan pengguna diminta untuk mengisi informasi dirinya ke dalam setiap multi-platform yang hendak diakses \cite{luthfi2012}. 
+
+UMS telah menerapkan teknologi SSO ini mengakses \gls{hotspot}, layanan perpustakaan, \gls{surel} dan beberapa aplikasi lain. Antarmuka program menggunakan \f{Central Authentication Service} yang disingkat CAS dari \url{http://www.jasig.org/cas} dan \f{\gls{credential}} berupa kombinasi \f{username} dan \f{password} yang tersimpan dalam database \GLS{ldap} yang diunduh dari Sistem Informasi Kepegawaian dan Sistem Informasi Kemahasiswaan.
+
+Dalam tulisan ini penulis memaparkan pembuatan sebuah aplikasi yang menghubungkan Sistem Informasi Kepegawaian dan Sistem Informasi Kemahasiswaan dengan \GLS{ldap} sekaligus digunakan untuk sinkronisasi data \GLS{ldap} dengan mail server \f{Google Apps} yang digunakan oleh UMS.
+
+%-----------------------------------------------------------------------------%
+\section{Materi Kerja Praktek}
+%-----------------------------------------------------------------------------%
+Penulis mendapat tugas dari IT UMS untuk membuat sebuah aplikasi yang menghubungkan Sistem Informasi Kepegawaian dan Sistem Informasi Kemahasiswaan dengan \GLS{ldap} sekaligus digunakan untuk sinkronisasi data \GLS{ldap} dengan mail server \f{Google Apps} yang digunakan oleh UMS.
+
+Aplikasi yang akan dibangun adalah aplikasi \textit{REST Web Service} dengan ketentuan sebagai berikut:
+\begin{enumerate}[itemsep=-1ex]
+\item Dibangun menggunakan bahasa pemrograman \textit{Python}.
+\item Digunakan untuk menambah, mengubah, dan menghapus data \GLS{ldap} dan \textit{Google Apps}.
+\item Authentikasi yang digunakan adalah \textit{Basic Authentication} yang merupakan kombinasi \textit{user} dan \textit{password}.
+\end{enumerate}
+
+REST (\textit{Representational State Transfer}) web service adalah salah satu cara pendistribusian data yang populer saat ini antara server dan client, dengan menggunakan protokol HTTP. REST pada dasarnya adalah objek yang direpresentasikan oleh URL yang unik. Kita dapat membuat, mendapatkan, mengubah dan menghapus konten objek menggunakan \textit{request} HTTP, biasanya GET untuk menampilkan, POST untuk menambah, PUT untuk mengubah dan DELETE untuk menghapus.
+%-----------------------------------------------------------------------------%
+\section{Manfaat Penelitian}
+%-----------------------------------------------------------------------------%
+\begin{enumerate}
+\item \bo{Multi sistem operasi}\\
+Konten dari aplikasi yang dibuat dapat diakses menggunakan berbagai sistem operasi yang berbeda.
+
+\item \bo{Multi bahasa pemrograman}\\
+Untuk memanggil konten dari aplikasi yang dibuat dapat menggunakan bahasa pemrograman yang berbeda, baik berbasis web, desktop maupun \textit{command line}.
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{Sistematika Penulisan}
+%-----------------------------------------------------------------------------%
+Sistematika penulisan laporan adalah sebagai berikut:
+\begin{enumerate}[leftmargin=1.4cm,label=BAB \arabic*]
+	\item  \babSatu \\Bagian ini berisi Latar Belakang, Materi Kerja Praktek, Manfaat Kerja Praktek dan Sistematika Penulisan.
+	\item  \babDua \\Bagian ini berisi profil Unit IT UMS tempat kerja praktek penulis.
+	\item  \babTiga \\Bagian ini memuat uraian tentang langkah-langkah penyelesaian masalah yang dilakukan selama melakukan kerja praktek.
+	\item  \babEmpat \\Bagian ini berisi uraian tentang hasil yang dicapai dai setiap aktifitas yang dilakukan selama kerja praktek beserta pembahasannya. 
+	\item  \kesimpulan \\Bagian ini memuat rangkuman dari hasil analisis kinerja pada bagian sebelumnya dan saran-saran yang perlu udiperhatikan berdasarkan keterbatasan yang ditemukan dan asumsi-asumsi yang dibuat selama pengembangan perangkat lunak.
+\end{enumerate}
+

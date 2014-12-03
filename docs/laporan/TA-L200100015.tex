@@ -1,0 +1,122 @@
+%
+% Template Laporan Skripsi/Thesis 
+%
+% @author  Andreas Febrian, Lia Sadita 
+% @version 1.03
+%
+% Dokumen ini dibuat berdasarkan standar IEEE dalam membuat class untuk 
+% LaTeX dan konfigurasi LaTeX yang digunakan Fahrurrozi Rahman ketika 
+% membuat laporan skripsi. Konfigurasi yang lama telah disesuaikan dengan 
+% aturan penulisan thesis yang dikeluarkan UI pada tahun 2008.
+%
+
+%
+% Tipe dokumen adalah report dengan satu kolom. 
+%
+\documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
+
+% Load konfigurasi LaTeX untuk tipe laporan thesis
+\usepackage{umsthesis}
+\usepackage{float}
+
+% format python code listing
+\usepackage{listings}
+\lstset{language=Python,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green},
+morecomment=[l][\color{magenta}]{\#},
+basicstyle=\ttfamily\scriptsize\singlespacing\bfseries
+}
+
+% Load konfigurasi khusus untuk laporan yang sedang dibuat
+\input{laporan_setting}
+% Daftar pemenggalan suku kata dan istilah dalam LaTeX
+\include{hype.indonesia}
+% Daftar istilah yang mungkin perlu ditandai 
+\input{istilah}
+
+% Awal bagian penulisan laporan
+\begin{document}
+%
+% Sampul Laporan
+\include{sampul}
+
+%
+% Gunakan penomeran romawi
+\pagenumbering{roman}
+
+%
+% load halaman judul dalam
+\addChapter{Halaman Judul}
+\include{judul_dalam}
+
+%
+% setelah bagian ini, halaman dihitung sebagai halaman ke 2
+\setcounter{page}{2}
+
+%
+% load halaman pengesahan
+\addChapter{Lembar Pengesahan}
+\include{pengesahan}
+%
+% load halaman orisinalitas 
+\addChapter{Surat Keterangan Kerja Praktek}
+\include{keterangan}
+%
+%
+\addChapter{Kata Pengantar}
+\include{pengantar}
+%
+%
+\addChapter{Sari}
+\include{sari}
+%
+%
+\addChapter{Daftar Istilah}
+\include{takarir}
+
+%
+% Daftar isi, gambar, dan tabel
+%
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+%
+% Gunakan penomeran Arab (1, 2, 3, ...) setelah bagian ini.
+%
+\pagenumbering{arabic}
+
+%
+%
+%
+\include{bab1}
+\include{bab2}
+\include{bab3}
+\include{bab4}
+\include{simpulan}
+
+%
+% Daftar Pustaka
+\include{pustaka}
+
+%
+% Lampiran 
+%
+%\begin{appendix}
+%	\include{markLampiran}
+%	\setcounter{page}{2}
+%	\include{lampiran}
+%\end{appendix}
+
+\end{document}
