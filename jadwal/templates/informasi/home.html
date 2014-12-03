@@ -1,0 +1,26 @@
+<html>
+<body>
+{% if calendar_list %}
+Kalender saya:
+<ul>
+{% for cal in calendar_list %}
+<li>{{ cal.summary }}: {{ cal.id }}</li>
+{% endfor %}
+</ul>
+Ruangan:
+<ul>
+{% for res in calendar_resources %}
+<li>{{ res.resource_common_name }}: {{ res.resource_id }}</li>
+{% endfor %}
+</ul>
+
+ID: {{ sample_resource.resource_id }}<br/>
+IName: {{ sample_resource.resource_common_name }}<br/>
+Type: {{ sample_resource.resource_type }}<br/>
+
+<p><a href="/logout">Logout</a></p>
+{% else %} 
+<a href="{% url "socialauth_begin" "google-oauth2" %}">Login</a>
+{% endif %}
+</body>
+</html>

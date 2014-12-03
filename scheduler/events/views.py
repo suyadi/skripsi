@@ -1,11 +1,8 @@
 import os
-import logging
 import httplib2
 
 from apiclient.discovery import build
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
-from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -28,7 +25,7 @@ FLOW = flow_from_clientsecrets(
         'https://www.googleapis.com/auth/calendar.readonly',
         'https://apps-apis.google.com/a/feeds/calendar/resource/',
     ],
-    redirect_uri='http://localhost:8000/oauth2callback')
+    redirect_uri='/oauth2callback')
 
 
 @login_required
@@ -47,6 +44,7 @@ def index(request):
         while True:
             calendar_list = service.calendarList().list(pageToken=page_token).execute()
             page_token = calendar_list.get('nextPageToken')
+            print calendar_list
             if not page_token:
                 break
         return render_to_response('events/welcome.html', {

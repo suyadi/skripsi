@@ -8,6 +8,5 @@ Pre Install
 
     $ virtualenv envi
     $ source envi/bin/activate
-    $ pip install https://www.djangoproject.com/download/1.7.b4/tarball/
     $ cd kalender
     $ pip install -r requirements.txt

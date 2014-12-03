@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12"><h2>{{ title }}</h2></div>
     <div class="col-lg-6">
-        <form role="form" method="GET">{% csrf_token %}
+        <form method="GET">{% csrf_token %}
             <div class="form-group input-group">
                 <input type=text name="q" class="form-control" placeholder="Filter" value="{{ q }}">
                 <span class="input-group-btn">
@@ -31,9 +31,11 @@
             <tbody>
             {% for resource in resources %}
                 <tr class="active">
-                    <td>{{ resource.resource_common_name }}</td>
+                    <td>{{ resource.resource_common_name }} ({{ resource.resource_email }})</td>
                     <td><a href="/resource/{{ resource.resource_id }}?q={{ q }}">
                             <i class="fa fa-edit"> edit</i></a>&nbsp;
+                        <a href="/resource/{{ resource.resource_id }}/calendar?q={{ q }}">
+                            <i class="fa fa-edit"> calendar</i></a>&nbsp;
                         <a href="/resource/{{ resource.resource_id }}/del?q={{ q }}">
                             <i class="fa fa-trash-o"> hapus</i></a></td>
                 </tr>

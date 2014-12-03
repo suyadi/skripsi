@@ -88,10 +88,6 @@ def edit_resource(request, resource_id):
     if request.method == 'POST':
         form = ResourceForm(request.POST)
         if form.is_valid():
-            r.resource_common_name = request.POST['resource_common_name']
-            r.resource_description = request.POST['resource_description']
-            r.resource_type = request.POST['resource_type']
-            r.save()
             client = GetClient()
             try:
                 client.UpdateResource(
@@ -105,6 +101,12 @@ def edit_resource(request, resource_id):
                      resource_common_name=request.POST['resource_common_name'],
                      resource_description=request.POST['resource_description'],
                      resource_type=request.POST['resource_type'])
+            resource = client.GetResource(resource_id=resource_id)
+            r.resource_common_name = request.POST['resource_common_name']
+            r.resource_description = request.POST['resource_description']
+            r.resource_email = resource.resource_email
+            r.resource_type = request.POST['resource_type']
+            r.save()
             return HttpResponseRedirect('/resources/?q=%s' % q)
     else:
         initial = {
@@ -122,6 +124,18 @@ def edit_resource(request, resource_id):
     })
 
 
+@manager_required
+def show_resource_calendar(request, resource_id):
+    try:
+        client = GetClient()
+        resource = client.GetResource(resource_id=resource_id)
+        data = {}
+        data['resource'] = resource
+        print resource.resource_email
+        return render(request, 'resources/resource_calendar.html', data)
+    except:
+        return HttpResponseRedirect('/resources/')
+    
 @manager_required
 def del_resource(request, resource_id):
     try:
@@ -143,7 +157,7 @@ def out_of_sync(request):
     resources = []
     for resource in calendar_resources.entry:
         try:
-            r = CalendarResources.objects.get(resource_id=resource.resource_id)
+            CalendarResources.objects.get(resource_id=resource.resource_id)
         except:
             resources.append(resource)
     return render_to_response('resources/out_of_sync.html', {
@@ -161,11 +175,17 @@ def sync(request, resource_id):
         return HttpResponseRedirect('/resources/out_of_sync')
     try:
         r = CalendarResources.objects.get(resource_id=resource.resource_id)
+        r.resource_id=resource.resource_id
+        r.resource_common_name=resource.resource_common_name
+        r.resource_description=resource.resource_description
+        r.resource_email=resource.resource_email
+        r.resource_type=resource.resource_type
     except:
         r = CalendarResources(
              resource_id=resource.resource_id,
              resource_common_name=resource.resource_common_name,
              resource_description=resource.resource_description,
+             resource_email=resource.resource_email,
              resource_type=resource.resource_type)
-        r.save()
-        return HttpResponseRedirect('/resources/out_of_sync')
+    r.save()
+    return HttpResponseRedirect('/resources/out_of_sync')

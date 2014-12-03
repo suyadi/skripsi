@@ -13,6 +13,7 @@ class CalendarResources(models.Model):
     resource_id = models.CharField(max_length=100)
     resource_common_name = models.CharField(max_length=100)
     resource_description = models.TextField(null=True, blank=True)
+    resource_email = models.CharField(max_length=100)
     resource_type = models.CharField(max_length=100)
     updated = models.DateTimeField(auto_now_add=True)
     def __unicode__(self):
