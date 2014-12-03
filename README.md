@@ -10,4 +10,4 @@ Pre Install
     $ cd jadwal
     $ pip install -r requirements.txt
 
-Google Credential: (https://console.developers.google.com/project/suyadi-devel/apiui/credential)
+Google Credential: https://console.developers.google.com/project/suyadi-devel/apiui/credential
