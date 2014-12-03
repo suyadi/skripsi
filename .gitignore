@@ -6,9 +6,14 @@ client_secrets.json
 .project
 .pydevproject
 *.aux
+*.bbl
 *.gl[gos]
+*.idx
+*.ind
 *.ist
 *.lo[fgt]
 *.out
+*.ptc
 *.synctex.gz
 *.toc
+docs/referensi/**
