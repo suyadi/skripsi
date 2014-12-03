@@ -1,0 +1,4 @@
+Django>=1.7.1
+httplib2>=0.9
+google-api-python-client>=1.2
+gdata>=2.0.18
