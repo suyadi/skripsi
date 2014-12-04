@@ -1,4 +1,6 @@
-# Aplikasi Kalender untuk Mengelola Jadwal Kegiatan di UMS Menggunakan Google Application API.
+# Google Apps Calendar
+
+Aplikasi Kalender untuk Mengelola Jadwal Kegiatan di UMS Menggunakan Google Application API
 
 ## Pre-install
 

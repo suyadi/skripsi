@@ -70,13 +70,7 @@ class GCalendar:
             return client.GetResourceFeed().entry
         else: return None
 
-    def UpdateCalendarResources(self,
-        resource_id,
-        resource_common_name,
-        resource_description,
-        resource_email,
-        resource_type
-        ):
+    def UpdateCalendarResources(self, resource_id, resource_common_name, resource_description, resource_email, resource_type):
         if self.oauth2token is not None:
             client = CalendarResourceClient(domain='ums.ac.id')
             client.auth_token = self.oauth2token
@@ -107,3 +101,17 @@ class GCalendar:
             except: return None
         else: return None
 
+    def GetCalendar(self, calendarId):
+        try:
+            return self.service.calendars().get(calendarId='primary').execute()
+        except: return None
+        
+    def UpdateCalendar(self, calendarId, summary=None, description=None, location=None, timeZone=None):
+        try:
+            calendar = self.service.calendar().get(calendarId='calendarId').execute()
+            if summary is not None: calendar['summary'] = summary
+            if description is not None: calendar['description'] = description
+            if location is not None: calendar['location'] = location
+            if timeZone is not None: calendar['timeZone'] = timeZone
+            return self.service.calendars().update(calendarId=calendar['id'], body=calendar).execute()
+        except: return None
