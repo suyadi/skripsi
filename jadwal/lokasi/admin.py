@@ -1,5 +1,5 @@
 from django.contrib import admin
-from lokasi.models import Gedung, Ruang
+from lokasi.models import Kampus, Gedung, Ruang
 
 class RuangTabular(admin.TabularInline):
     model = Ruang
@@ -8,4 +8,5 @@ class RuangTabular(admin.TabularInline):
 class GedungAdmin(admin.ModelAdmin):
     inlines = (RuangTabular,) 
 
-admin.site.register(Gedung)
+admin.site.register(Kampus)
+admin.site.register(Gedung, GedungAdmin)
