@@ -17,3 +17,5 @@ client_secrets.json
 *.synctex.gz
 *.toc
 docs/referensi/**
+**/migrations/**
+!**/migrations/__init__.py
